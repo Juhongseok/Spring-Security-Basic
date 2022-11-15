@@ -1,11 +1,14 @@
 package com.jhs.springsecuritybasic.chap03;
 
+import com.jhs.springsecuritybasic.chap03.user.SimpleUser;
 import com.jhs.springsecuritybasic.chap03.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.List;
 
 public class ProjectConfigCh03 {
 
@@ -14,9 +17,9 @@ public class ProjectConfigCh03 {
 
     @Bean
     public UserDetailsService userDetailsService(){
-//        SimpleUser user = new SimpleUser("John", "12345", "READ");
-//        return new InMemoryUserDetailsService(List.of(user));
-        return new JpaUserDetailsManager(userRepository);
+        SimpleUser user = new SimpleUser("John", "12345", "READ");
+        return new InMemoryUserDetailsService(List.of(user));
+//        return new JpaUserDetailsManager(userRepository);
     }
 
     @Bean
