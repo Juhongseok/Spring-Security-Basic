@@ -1,7 +1,7 @@
 package com.jhs.springsecuritybasic.chap03;
 
 import com.jhs.springsecuritybasic.chap03.user.SimpleUser;
-import com.jhs.springsecuritybasic.chap03.user.UserRepository;
+import com.jhs.springsecuritybasic.chap06.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetailsService;

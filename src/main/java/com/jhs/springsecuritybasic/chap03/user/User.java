@@ -3,7 +3,7 @@ package com.jhs.springsecuritybasic.chap03.user;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+//@Entity
 public class User {
     @Id
     private Long id;
