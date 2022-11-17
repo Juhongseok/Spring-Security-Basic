@@ -13,8 +13,8 @@ import org.springframework.context.annotation.Import;
 //@Import({/*ProjectConfigCh02.class,*/ WebAuthorizationConfigCh02.class})
 //@Import(ProjectConfigCh03.class)
 //@Import(ProjectConfigCh05.class)
-@Import({ProjectConfigCh06.class, WebConfig.class})
-@ComponentScan("com.jhs.springsecuritybasic.chap06")
+//@Import({ProjectConfigCh06.class, WebConfig.class})
+@ComponentScan("com.jhs.springsecuritybasic.chap07")
 public class SpringSecurityBasicApplication {
 
 	public static void main(String[] args) {
