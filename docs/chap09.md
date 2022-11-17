@@ -3,7 +3,7 @@
 기본적으로 시큐리티에서 제공되는 필터 외에도 원하는 방식대로 모델링 가능
 
 ## Filter 종류
---사진첨부--
+![filter 종류](https://user-images.githubusercontent.com/75611167/202352721-454da190-3a80-464e-94d5-43fc336955c8.png)
 
 `@EnableWebSecurity(debug = true)`어노테이션을 붙여주면 현재 실행되는 Security Fiter들을 확인할 수 있다.
 
