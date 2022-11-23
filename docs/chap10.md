@@ -26,6 +26,7 @@ public interface CsrfToken extends Serializable {
 
 시큐리티에서 `CsrfTokenRepository` 인터페이스 제공 --> 해당 기능 구현
 
+![csrf토큰 저장](https://user-images.githubusercontent.com/75611167/203509727-9f10187e-0c82-40b3-813a-41c17ad43e96.jpg)
 ```java
 @RequiredArgsConstructor
 public class CustomCsrfTokenRepository implements CsrfTokenRepository {
@@ -64,4 +65,5 @@ protected void doFilterInternal(HttpServletRequest request, HttpServletResponse 
     }
 }
 ```
- !!!!csrf 토큰 저장 사진 추가!!!!
+![csrf토큰 저장2](https://user-images.githubusercontent.com/75611167/203509749-e243f89c-e04b-4269-9ac9-db84e3c15fda.jpg)
+
