@@ -67,3 +67,72 @@ protected void doFilterInternal(HttpServletRequest request, HttpServletResponse 
 ```
 ![csrf토큰 저장2](https://user-images.githubusercontent.com/75611167/203509749-e243f89c-e04b-4269-9ac9-db84e3c15fda.jpg)
 
+## CORS
+사이트가 로드된 도메인 이외의 도메인에 대한 요청을 거부
+
+> ex.com 웹사이트는 ex.org 웹사이트의 요청을 거부
+
+- CORS 이용해서 허용할 도메인, 세부정보 지정 가능
+- 제한이 적용되도 엔드포인트 호출은 가능
+
+### 부분 허용 방법
+- 엔드포인트를 정의하는 메서드 위에 `@CrossOrigin` 사용
+  - 장점
+    - 사용이 간단함
+  - 단점
+    - 반복적인 코드 작성
+- config 직접 작성
+  - securityFilterChain 직접 등록: Spring Security 이용
+    ```java
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+      CorsConfigurationSource source = request -> {
+          CorsConfiguration config = new CorsConfiguration();
+          config.setAllowedOrigins(
+                  List.of("http://localhost:8080")
+          );
+          config.setAllowedMethods(
+                  List.of("GET", "POST", "PUT", "DELETE")
+          );
+          return config;
+      };
+      http.cors(c -> {
+          c.configurationSource(source);
+      });
+    }
+    ```
+  - MVCConfigurer 등록: Spring Web MVC 이용
+    ```java
+    @Bean
+    public WebMvcConfigurer corsConfigurer(){
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins("http://localhost:8080")
+                        .allowedMethods("GET", "POST");
+            }
+        };
+    }
+    ```
+    
+  - CorsConfigurationSource 등록
+    ```java
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(List.of("http://localhost:8080"));
+        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.setCorsConfigurations(setMapping(configuration));
+        return source;
+    }
+
+    private HashMap<String, CorsConfiguration> setMapping(CorsConfiguration configuration) {
+        HashMap<String, CorsConfiguration> corsConfigurations = new HashMap<>();
+        corsConfigurations.put("/test", configuration);
+        return corsConfigurations;
+    }  
+    ```
+

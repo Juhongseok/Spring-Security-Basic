@@ -1,5 +1,6 @@
 package com.jhs.springsecuritybasic;
 
+import com.jhs.springsecuritybasic.chap10.ProjectConfigCh10;
 import com.jhs.springsecuritybasic.chap10.WebConfigCh10;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,7 +12,7 @@ import org.springframework.context.annotation.Import;
 //@Import(ProjectConfigCh03.class)
 //@Import(ProjectConfigCh05.class)
 //@Import({ProjectConfigCh06.class, WebConfig.class})
-@Import(WebConfigCh10.class)
+@Import({WebConfigCh10.class, ProjectConfigCh10.class})
 @ComponentScan("com.jhs.springsecuritybasic.chap10")
 //@EnableWebSecurity(debug = true)
 public class SpringSecurityBasicApplication {
